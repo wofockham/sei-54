@@ -76,10 +76,10 @@ const ghostbusters = {
     stars: ['Bill Murray', 'Dan Akroyd', 'Sigourney Weaver']
 };
 
-const movieInfo = function () {
-    const info = `${ myFavouriteMovie.title } lasts for ${ myFavouriteMovie.duration } minutes. Stars: ${ myFavouriteMovie.stars.join(', ') }`;
+const movieInfo = function (movie) {
+    const info = `${ movie.title } lasts for ${ movie.duration } minutes. Stars: ${ movie.stars.join(', ') }`;
     console.log(info);
 };
 
-movieInfo();
+movieInfo(myFavouriteMovie);
 movieInfo(ghostbusters);

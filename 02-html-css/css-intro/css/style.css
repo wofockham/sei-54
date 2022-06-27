@@ -40,6 +40,8 @@ img {
     width: 33%;
 }
 
+/* Class selectors */
+
 img.feature {
     width: 100%;
 }

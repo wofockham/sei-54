@@ -1,0 +1,49 @@
+body {
+    background-color: red;
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: white;
+    text-align: center;
+    line-height: 300px; /* budget vertical centering */
+}
+
+.block {
+    display: block; /* this is the default for most elements */
+}
+
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    /* The float killer: use this instead of float */
+    display: inline-block;
+}
+
+.none {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* Pseudoselectors and transitions */
+.spooky span {
+    visibility: hidden;
+}
+
+.spooky:hover {
+    background-color: black;
+}
+
+.spooky:hover span {
+    transition: 2s all;
+    visibility: visible;
+    color: yellow;
+}
+

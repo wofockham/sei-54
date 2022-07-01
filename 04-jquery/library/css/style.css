@@ -1,0 +1,5 @@
+.alreadyread {
+    opacity: 0.5;
+    border: 1px solid blue;
+    font-style: italic;
+}

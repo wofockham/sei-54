@@ -1,0 +1,31 @@
+body {
+    background-color: peachpuff;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+header {
+    transition: 0.3s all;
+    text-align: center;
+    font-size: 200%;
+    background-color: #ccc;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+header.active {
+    background-color: green;
+    font-size: 400%;
+}
+
+header input {
+    font-size: 100%;
+}
+
+img {
+    width: 100%;
+    display: block;
+}

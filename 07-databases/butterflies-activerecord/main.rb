@@ -110,4 +110,11 @@ get '/plants/:id' do
     erb :plants_show
 end
 
+# EDIT
+# Show you the existing plant data in a form
+get '/plants/:id/edit' do
+    @plant = Plant.find params[:id]
+    erb :plants_edit
+end
+
 # TODO: add a connection close.

@@ -127,4 +127,14 @@ post '/plants/:id' do
     redirect to("/plants/#{ plant.id }")
 end
 
-# TODO: add a connection close.
+# DELETE
+# Delete a plant from the database
+get '/plants/:id/delete' do
+    plant = Plant.find params[:id]
+    plant.destroy
+    redirect to('/plants')
+end
+
+after do
+    ActiveRecord::Base.connection.close # Housekeeping
+end

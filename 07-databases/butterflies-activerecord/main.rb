@@ -15,6 +15,9 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 class Butterfly < ActiveRecord::Base
 end
 
+class Plant < ActiveRecord::Base
+end
+
 get '/' do
     erb :home
 end
@@ -74,6 +77,37 @@ get '/butterflies/:id/delete' do
     butterfly = Butterfly.find params[:id]
     butterfly.destroy
     redirect to('/butterflies')
+end
+
+# Plants ############################################################
+# INDEX
+# Show all the plants
+get '/plants' do
+    @plants = Plant.all
+    erb :plants_index
+end
+
+# NEW
+# Blank form for a new plant
+get '/plants/new' do
+    erb :plants_new
+end
+
+#CREATE
+# Create a new plant in the database from the user's form data
+post '/plants' do
+    plant = Plant.new
+    plant.name = params[:name]
+    plant.image = params[:image]
+    plant.save
+    redirect to("/plants/#{ plant.id }") # GET request for SHOW
+end
+
+# SHOW
+# Show all the information for a single plant
+get '/plants/:id' do
+    @plant = Plant.find params[:id]
+    erb :plants_show
 end
 
 # TODO: add a connection close.

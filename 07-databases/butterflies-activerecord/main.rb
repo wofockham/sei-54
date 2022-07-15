@@ -117,4 +117,14 @@ get '/plants/:id/edit' do
     erb :plants_edit
 end
 
+# UPDATE
+# Update the database with new plant data for an existing plant
+post '/plants/:id' do
+    plant = Plant.find params[:id]
+    plant.name = params[:name]
+    plant.image = params[:image]
+    plant.save
+    redirect to("/plants/#{ plant.id }")
+end
+
 # TODO: add a connection close.

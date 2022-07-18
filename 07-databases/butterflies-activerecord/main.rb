@@ -13,9 +13,11 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 
 # Model: a class that is backed by a database
 class Butterfly < ActiveRecord::Base
+    belongs_to :plant, :optional => true
 end
 
 class Plant < ActiveRecord::Base
+    has_many :butterflies
 end
 
 get '/' do

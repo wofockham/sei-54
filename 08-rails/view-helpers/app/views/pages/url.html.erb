@@ -1,0 +1,15 @@
+<h1>URL helpers</h1>
+
+<!-- what not do -->
+<a href="/">Home</a>
+<a href="/numbers">Numbers</a>
+<a href="/text">Text</a>
+<a href="/assets">Assets</a>
+<a href="/url">URL</a>
+
+<!-- the rails way: don't hardcode your URLs (in case they change) -->
+<%= link_to "Home", root_path %>
+<%= link_to "Numbers", numbers_path %>
+<%= link_to "Text", text_path %>
+<%= link_to "Assets", assets_path %>
+<%= link_to "URL", url_path %>

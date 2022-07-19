@@ -1,0 +1,7 @@
+<h1>All planets</h1>
+
+<% @planets.each do |planet| %>
+    <p>
+        <%= link_to planet.name, planet_path(planet.id) %>
+    </p>
+<% end %>

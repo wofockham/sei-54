@@ -5,3 +5,16 @@
 .feature {
     max-height: 30em;
 }
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+}
+
+body {
+    background-color: #ccd;
+}

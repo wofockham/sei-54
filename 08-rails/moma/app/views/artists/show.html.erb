@@ -10,5 +10,5 @@
 
 <div class="controls">
     <%= link_to 'Edit artist', edit_artist_path(@artist) %>
-    <%= button_to 'Delete artist', @artist, :method => 'delete' %>
+    <%= link_to 'Delete artist', @artist, :method => 'delete', :data => { :confirm => 'Are you sure?' } %>
 </div>

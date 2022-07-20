@@ -1,2 +1,14 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<h1><%= @artist.name %></h1>
+
+<%= image_tag @artist.image, :class => 'feature' if @artist.image.present? %>
+<ul>
+    <li>Name: <%= @artist.name %></li>
+    <li>Nationality: <%= @artist.nationality %></li>
+    <li>Date of birth: <%= @artist.dob.strftime '%A, %B %e, %Y' unless @artist.dob.nil? %></li>
+    <li>Period: <%= @artist.period %></li>
+</ul>
+
+<div class="controls">
+    <%= link_to 'Edit artist', edit_artist_path(@artist) %>
+    <%= button_to 'Delete artist', @artist, :method => 'delete' %>
+</div>

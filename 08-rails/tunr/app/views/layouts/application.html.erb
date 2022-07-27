@@ -11,19 +11,23 @@
 
   <body>
 
-    <nav>
-      <%= link_to 'Home', root_path %>
+    <div class="container">
 
-      <% if @current_user.present? %>
-        <%= link_to "All users", users_path if @current_user.admin? %>
-        <%= link_to "Create mixtape", new_mixtape_path %>
-        <%= link_to "Logout #{ @current_user.email }", login_path, :method => 'delete' %>
-      <% else %>
-        <%= link_to 'Sign up', new_user_path %>
-        <%= link_to 'Sign in', login_path %>
-      <% end %>
-    </nav>
+      <nav>
+        <%= link_to 'Home', root_path %>
 
-    <%= yield %>
+        <% if @current_user.present? %>
+          <%= link_to "All users", users_path if @current_user.admin? %>
+          <%= link_to "Create mixtape", new_mixtape_path %>
+          <%= link_to "Logout #{ @current_user.email }", login_path, :method => 'delete' %>
+        <% else %>
+          <%= link_to 'Sign up', new_user_path %>
+          <%= link_to 'Sign in', login_path %>
+        <% end %>
+      </nav>
+
+      <%= yield %>
+
+    </div>
   </body>
 </html>

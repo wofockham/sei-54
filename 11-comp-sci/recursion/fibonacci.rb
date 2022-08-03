@@ -16,8 +16,16 @@ def fibonacci_iterative(n) # initial
 end
 
 def fibonacci_recursive(n)
-    # base case
-    # step closer to the base case
+    if n <= 2
+        1
+    else
+        fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+    end
 end
+
+# Bonus homework:
+# Make the recursive version faster!
+# Option a: memoisation
+# Option b: iterative recursion
 
 binding.pry

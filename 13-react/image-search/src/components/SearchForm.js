@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 
 class SearchForm extends Component {
-    _handleSubmit(event) {
-        event.preventDefault(); // Disable the form submission.
-
-        // pass the search term from state to the parent
+    constructor() {
+        super();
+        this.state = {
+            query: ''
+        };
+        this._handleInput = this._handleInput.bind(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
 
+    _handleSubmit(event) {
+        event.preventDefault(); // Disable the form submission.
+        this.props.onSubmit(this.state.query);
+    }
+
+    // React text inputs "track" their value live.
     _handleInput(event) {
-        console.log(event);
+        this.setState({query: event.target.value});
     }
 
     render() {
         return (
             <form onSubmit={ this._handleSubmit }>
-                <input type="search" required placeholder="butterfly" />
-                <input type="submit" value="Search" />
+                <input type="search" required placeholder="butterfly" onChange={ this._handleInput } />
+                <input type="submit" value={ `Search for ${ this.state.query }` } />
             </form>
         );
     }

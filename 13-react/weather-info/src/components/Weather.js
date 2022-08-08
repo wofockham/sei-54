@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios';
 
 class Weather extends Component {
@@ -43,36 +43,26 @@ class Weather extends Component {
   }
 };
 
+const SearchForm = (props) => {
+  const [query, setQuery] = useState('');
+  const _handleInput = (e) => {
+    setQuery(e.target.value);
+  };
 
-class SearchForm extends Component {
-  constructor() {
-    super();
-    this.state = { query: '' };
-    this._handleInput = this._handleInput.bind(this);
-    this._handleSubmit = this._handleSubmit.bind(this);
-  }
-
-  _handleInput(event) {
-    this.setState({query: event.target.value});
-  }
-
-  _handleSubmit(event) {
-    event.preventDefault();
+  const _handleSubmit = (e) => {
+    e.preventDefault();
     // The child component communicates its data (query) back to the parent
     // via this onSubmit callback.
-    this.props.onSubmit( this.state.query );
-  }
+    props.onSubmit(query);
+  };
 
-  render() {
-    return (
-      <form onSubmit={this._handleSubmit}>
-        <input type="search" onInput={this._handleInput} required placeholder="Glasgow" />
-        <input type="submit" value="Get weather" />
-      </form>
-    );
-  }
-}
-
+  return (
+    <form onSubmit={_handleSubmit}>
+      <input type="search" onInput={_handleInput} required placeholder="Glasgow" />
+      <input type="submit" value="Get weather" />
+    </form>
+  );
+};
 
 const WeatherInfo = (props) => {
   // Conditional rendering: we only show results once they're available.

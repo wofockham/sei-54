@@ -8,9 +8,26 @@ class FlickrSearch extends Component {
     constructor() {
         super();
         this.fetchImages = this.fetchImages.bind(this);
+        this.state = {
+            images: []
+        };
     }
 
     fetchImages(q) {
+        const generateURL = function (p) {
+            return [
+                'http://farm',
+                p.farm,
+                '.static.flickr.com/',
+                p.server,
+                '/',
+                p.id,
+                '_',
+                p.secret,
+                '_q.jpg' // change 'q' to something else for different sizes (see documentation)
+            ].join('');
+        };
+
         console.log('searching flickr for', q);
         const flickrURL = 'https://api.flickr.com/services/rest';
         const flickrParams = {
@@ -22,7 +39,8 @@ class FlickrSearch extends Component {
         };
 
         axios(flickrURL, { params: flickrParams }).then((response) => {
-            console.log(response);
+            const images = response.data.photos.photo.map(generateURL);
+            this.setState({images: images});
         });
     }
 
@@ -31,7 +49,7 @@ class FlickrSearch extends Component {
             <div>
                 <h1>Image Search</h1>
                 <SearchForm onSubmit={ this.fetchImages } />
-                <Gallery />        
+                <Gallery images={ this.state.images } />        
             </div>
         );
     }

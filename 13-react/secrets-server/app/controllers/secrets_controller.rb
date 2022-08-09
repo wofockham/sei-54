@@ -3,7 +3,7 @@ class SecretsController < ApplicationController
 
   # GET /secrets or /secrets.json
   def index
-    @secrets = Secret.all
+    @secrets = Secret.order('id DESC')
   end
 
   # GET /secrets/1 or /secrets/1.json

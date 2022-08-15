@@ -1,26 +1,18 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-class RandomNumberTrivia extends Component {
-    constructor() {
-        super();
-        this.state = {
-            fact: 'Loading...'
-        };
-    }
+const RandomNumberFact = () => {
+    const [fact, setFact] = useState('Loading...');
 
-    // React lifecycle methods
-    componentDidMount() {
+    useEffect(() => {
         axios.get('http://numbersapi.com/random/trivia').then((response) => {
-            this.setState({fact: response.data});
+            setFact(response.data);
         });
-    }
+    }, []); // empty array means "run this function only once"
 
-    render() {
-        return (
-            <p>{ this.state.fact }</p>
-        );
-    }
-}
+    return (
+        <p>{ fact }</p>
+    );
+};
 
-export default RandomNumberTrivia;
+export default RandomNumberFact;

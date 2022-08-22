@@ -1,0 +1,18 @@
+{
+  "name": "node-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "00-hello.js",
+  "scripts": {
+    "cool": "node 02-cool-text.js",
+    "start": "node 03-simple-server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "figlet": "^1.5.2",
+    "readline": "^1.3.0"
+  }
+}

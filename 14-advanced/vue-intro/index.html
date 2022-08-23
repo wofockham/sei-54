@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Intro</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        {{ message }}        
+    </div>
+    
+    <script>
+        const app = new Vue({
+            el: '#app', // CSS selector
+            data: {
+                message: 'Hello World'
+            }
+        });
+    </script>
+
+    <hr>
+
+    <div id="app-2">
+        <span v-bind:title="message">
+            Hover over this message to see the title
+        </span>
+    </div>
+
+    <script>
+        const app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: `You loaded this page on ${ new Date().toLocaleString() }`
+            }
+        });
+    </script>
+
+    <hr>
+
+    <div id="app-3">
+        <span v-if="visible">Can you see me?</span>
+    </div>
+
+    <script>
+        const app3 = new Vue({
+            el: '#app-3',
+            data: {
+                visible: true
+            }
+        })
+    </script>
+
+    <hr>
+
+    <div id="app-4">
+        <ol>
+            <li v-for="task in tasks">
+                {{ task.text }}
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        const app4 = new Vue({
+            el: '#app-4',
+            data: {
+                tasks: [
+                    { text: 'Learn Javascript' },
+                    { text: 'Learn Vue' },
+                    { text: 'Kill all humans' },
+                    { text: 'Compare React and Vue'}
+                ]
+            }
+        })
+    </script>
+
+    <hr>
+
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse message</button>
+    </div>
+
+    <script>
+        const app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Destroy all rational thought'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+
+    <hr>
+
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message" placeholder="this is placeholder">
+    </div>
+
+    <script>
+        const app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: ''
+            }
+        });
+    </script>
+
+</body>
+</html>

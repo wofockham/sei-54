@@ -4,6 +4,7 @@ const stockfinder = require('stockfinder');
 
 const server = express();
 server.set('view-engine', ejs);
+server.use(express.static('public')); // put the public folder "online"
 
 const PORT = 8888;
 const API_KEY = 'pk_16a849fd637243a79fff90fa4d42bc5d';

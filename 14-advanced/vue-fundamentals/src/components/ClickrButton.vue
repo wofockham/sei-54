@@ -19,3 +19,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+button {
+    background-color: pink;
+    box-shadow: 0 0 25px limegreen;
+}
+</style>

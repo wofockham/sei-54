@@ -7,7 +7,7 @@ global.Vocab = require('./api/models/vocabModel');
 const routes = require('./api/routes/vocabRoutes');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://theBlade:@cluster0.i0cbj.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(`mongodb+srv://theBlade:${ process.env.MONGOPW }@cluster0.i0cbj.mongodb.net/?retryWrites=true&w=majority`);
 
 const port = process.env.PORT || 3000; // this is so Heroku can assign a PORT to you
 const app = express();

@@ -17,3 +17,7 @@
     border: 1px solid black;
     border-radius: 0.5em;
 }
+
+.swatch.selected {
+    box-shadow: 0 0 10px limegreen;
+}

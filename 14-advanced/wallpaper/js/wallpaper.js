@@ -24,6 +24,10 @@ const fetchImages = (subreddits) => {
     });
 
     const fadeNext = function (nth) {
+        if (nth >= $('.wallpaper').length) {
+            nth = 0;
+        }
+
         $('.wallpaper.show').removeClass('show');
         $('.wallpaper').eq(nth).addClass('show');
 

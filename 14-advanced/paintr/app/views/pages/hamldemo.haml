@@ -1,0 +1,24 @@
+%h1.breaking.friday#hero Hello World
+
+/ Comments
+
+%h2= "hotdogs" * 15
+
+%h3= "Your lucky number is #{ @lucky  }"
+
+%div.container
+    %p this is a nested paragraph
+    %p so is this
+    %p
+        %span here is a span
+%p this is not nested
+
+%label
+    Name
+    %input{:placeholder => 'Your name here'}
+
+%ul
+    - %w( Groucho Harpo Chico Zeppo Gummo ).each do |brother|
+        %li= brother
+
+%p HAML knows when to close a block based on your indentation (no need for - end)

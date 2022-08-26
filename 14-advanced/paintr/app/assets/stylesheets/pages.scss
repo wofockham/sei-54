@@ -1,0 +1,19 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pixel {
+    width: 1em;
+    height: 1em;
+    border: 1px solid black;
+    display: inline-block;
+    float: left;
+}
+
+.swatch {
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}

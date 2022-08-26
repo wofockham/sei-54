@@ -1,0 +1,33 @@
+body {
+    background-color: #111;
+}
+
+#subreddit {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 1;
+    opacity: 0.2;
+}
+
+/* Pseudoselector */
+#subreddit:focus {
+    opacity: 1;
+}
+
+.wallpaper {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 2s ease-in-out;
+}
+
+.wallpaper.show {
+    opacity: 1;
+}

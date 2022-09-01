@@ -1,0 +1,11 @@
+<h1>Web Servers Gone Wild</h1>
+
+<h2><%= @hosts.count %> servers detected</h2>
+
+<% @hosts.each do |ip| %>
+    <p>
+        <a href="http://<%= ip %>" target="_blank">
+            <%= ip %>
+        </a>
+    </p>
+<% end %>

@@ -1,17 +1,15 @@
-'use strict';
-
-var state = {
+const state = {
     currentPage: 1,
-    lastPageReached: false
+    lastPageReached: false,
 };
 
-var searchFlickr = function searchFlickr(keywords) {
+const searchFlickr = function (keywords) {
 
     if (state.lastPageReached) return;
 
     console.log('Searching for', keywords);
 
-    var flickrURL = 'https://api.flickr.com/services/rest';
+    const flickrURL = 'https://api.flickr.com/services/rest';
 
     $.getJSON(flickrURL, {
         method: 'flickr.photos.search',
@@ -26,18 +24,28 @@ var searchFlickr = function searchFlickr(keywords) {
             state.lastPageReached = true;
         }
     });
+
 };
 
-var showImages = function showImages(results) {
+const showImages = function (results) {
     _(results.photos.photo).each(function (photo) {
-        var thumbnail = generateURL(photo);
-        var $img = $('<img>', { src: thumbnail });
+        const thumbnail = generateURL(photo);
+        const $img = $('<img>', {src: thumbnail});
         $('#images').append($img);
     });
 };
 
-var generateURL = function generateURL(p) {
-    return ['http://farm', p.farm, '.static.flickr.com/', p.server, '/', p.id, '_', p.secret, '_q.jpg' // change 'q' to something else for different sizes (see documentation)
+const generateURL = function (p) {
+    return [
+        'http://farm',
+        p.farm,
+        '.static.flickr.com/',
+        p.server,
+        '/',
+        p.id,
+        '_',
+        p.secret,
+        '_q.jpg' // change 'q' to something else for different sizes (see documentation)
     ].join('');
 };
 
@@ -49,19 +57,19 @@ $(document).ready(function () {
         state.currentPage = 1;
         state.lastPageReached = false;
 
-        var searchTerms = $('#query').val();
+        const searchTerms = $('#query').val();
         searchFlickr(searchTerms);
     });
 
     // Higher Order Function
-    var relaxedSearchFlickr = _.debounce(searchFlickr, 4000, true); // true: leading edge (don't wait to run)
+    const relaxedSearchFlickr = _.debounce(searchFlickr, 4000, true); // true: leading edge (don't wait to run)
 
     $(window).on('scroll', function () {
         // calculate the scrollBottom (how close we are to the end of the document)
-        var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+        const scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
 
         if (scrollBottom < 600) {
-            var searchTerms = $('#query').val();
+            const searchTerms = $('#query').val();
             relaxedSearchFlickr(searchTerms);
         }
     });
